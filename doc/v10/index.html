@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>v10程序介绍 - 苹果CMS</title>
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="/static/css/global.css" media="all">
+</head>
+<body>
+<div class="layui-header header header-faq">
+  <div class="layui-main">
+    <a class="logo" href="/">苹果CMS</a>
+    <div class="layui-form component">
+      
+    </div>
+    <ul class="layui-nav">
+     	      <li class="layui-nav-item"><a href="/doc/v10/index.html" target="_blank">文档</a></li>
+		<li class="layui-nav-item"><a href="http://www.pgyun.xyz" target="_blank">云主机</a></li>
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="/static/js/html5.min.js"></script>
+  <script src="/static/js/respond.min.js"></script>
+<![endif]--> 
+<ul class="site-dir">
+  <li><a href="#compatibility"><cite>兼容性和面向场景</cite></a></li>
+  <li><a href="#get"><cite>获取苹果CMS v10</cite></a></li>
+</ul>
+<div class="layui-main site-inline">
+  <div class="site-tree">
+  <div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">
+    <select lay-filter="tabVersion">
+      <option value="v10" selected>v10</option>
+      <option value="v8" >v8</option>
+    </select>
+  </div>
+  <ul class="layui-tree">
+    <li><h2>基础说明</h2></li>
+    <li class="site-tree-noicon layui-this">
+      <a href="/doc/v10/">
+        <cite>开始使用</cite>
+        <em>Getting Started</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="/doc/v10/faq.html">
+        <cite>常见问题</cite>
+        <em>FAQ</em>
+      </a>
+    </li>
+    <li class="site-tree-noicon ">
+      <a href="/doc/v10/label.html">
+        <cite>模板标签</cite>
+        <em>TempLate</em>
+      </a>
+    </li>
+
+  </ul>
+</div>
+
+
+  <div class="site-content">
+    <h1 class="site-h1">开始使用 - 入门指南</h1>
+    <blockquote class="layui-elem-quote">
+      苹果CMS程序是一套采用PHP+MYSQL环境下运行的完善而强大的快速建站系统。
+      经过近多年的开发经验和技术积累，苹果CMS程序已逐步走向成熟，在易用性和功能上已经成为同行中的佼佼者。
+      程序体积小->优化程序代码，运行速度快->高效的缓存处理，只要普通的虚拟主机就可以完美搭建起来，建站成本非常低。仿MVC模板分离，内置标签，自定义函数标签接口，强大的自定义采集功能，只要你会HTML就可以轻松做出个性化的网站。 程序易用性和功能上一直以来都积极采纳广大站长提出的各种好的建议，迅速响应各种紧急问题，我们的服务理念贯穿其中，保证每一位站长每一个环节都可以从容应对。
+    <br><br>
+      v10采用tp5.x内核进行开发，扩展了模板处理引擎，将后台程序与html模板简单的分离出来，让设计人员与程序人员最大限度的发挥自己的优势而互不干扰，大大加快了项目有序、快速的完成。
+      即使您是第一次接触，也会在最短的时间内熟练掌握它的使用方法。后台管理模块，一目了然，操作简单，绝对不会让您眼花缭乱。
+    </blockquote>
+
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="compatibility">兼容性和面向场景</a></legend>
+    </fieldset>
+
+    <blockquote class="layui-elem-quote" >
+      1、Windows 平台：
+      IIS/Apache/Nginx/等 + PHP(5.5 +) + MySQL(5.5 +)
+    <br>
+      2、Linux/Unix 平台：
+      Apache/Nginx/等 + PHP (5.5 +) + MySQL(5.5 +) (PHP必须在非安全模式下运行)
+    </blockquote>
+
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="get">获得 苹果CMS v10</a></legend>
+    </fieldset>
+    <div class="site-text">
+
+      <blockquote class="layui-elem-quote ">
+        你可以在我们的官网首页 下载到 苹果CMS 的最新版，它经过了自动化构建，更适合用于生产环境。目录结构如下：
+      </blockquote>
+      <pre class="layui-code">
+  │─application //应用目录
+  │  │─admin //后台模块
+  │  │─api //api模块
+  │  │─common //公共模块
+  │  │─extra //配置文件
+  │  │─index //前台模块
+  │  │─install //安装模块
+  │─extend  //扩展目录
+  │─runtime //缓存目录
+  │─static //静态文件目录
+  │─template //前台模板目录
+  │─thinkphp //tp目录
+  │─upload //附件目录
+  │─vendor //第三发库目录
+  └─index.php //入口文件
+       </pre>
+    </div>
+
+
+    <div class="layui-elem-quote">
+      <p>苹果CMS - 用心与你沟通</p>
+    </div>
+    
+  </div>
+
+</div>
+  
+<div class="layui-footer footer footer-doc">
+  <div class="layui-main">
+    <p>&copy; 2020 <a href="/">maccms.la</a> MIT license</p>
+    <p>
+      声明：请在遵守法律的前提下使用本站软件，对用户在使用过程中的信息内容本站不负任何责任！
+    </p>
+    <p class="site-union">
+      <a href="https://www.upyun.com?from=maccms" target="_blank" rel="nofollow" upyun><img src="/static/images/upyun.png" alt="upyun"></a>
+      <span>提供 CDN 赞助</span>
+    </p>
+  </div>
+</div>
+
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script>
+layui.config({
+  base: '/static/js/'
+  ,version: '20180130'
+}).use('global');
+</script>
+<span style="display:none;">
+</span>
+</body>
+</html>

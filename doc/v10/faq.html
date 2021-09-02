@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>v10常见问题 - 苹果CMS</title>
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="/static/css/global.css" media="all">
+</head>
+<body>
+<div class="layui-header header header-faq">
+  <div class="layui-main">
+    <a class="logo" href="/">苹果CMS</a>
+    <div class="layui-form component">
+      
+    </div>
+    <ul class="layui-nav">
+     	      <li class="layui-nav-item"><a href="/doc/v10/index.html" target="_blank">文档</a></li>
+		<li class="layui-nav-item"><a href="http://www.pgyun.xyz" target="_blank">云主机</a></li>
+    </ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="/static/js/html5.min.js"></script>
+  <script src="/static/js/respond.min.js"></script>
+<![endif]--> 
+<ul class="site-dir">
+  <li><a href="#quickstart"><cite>快速安装</cite></a></li>
+  <li><a href="#jquery"><cite>如何使用内部jQuery</cite></a></li>
+  <li><a href="#form"><cite>为什么表单不显示</cite></a></li>
+  <hr>
+  <li><a href="#compress"><cite>哪里有未压缩源代码</cite></a></li>
+  
+  <li><a href="#other"><cite>还是遇到困难咋办？</cite></a></li>
+</ul>
+<div class="layui-main site-inline">
+  <div class="site-tree">
+  <div class="layui-form" style="height: 38px; margin: 10px 13px 0 0;">
+    <select lay-filter="tabVersion">
+      <option value="v10" selected>v10</option>
+      <option value="v8" >v8</option>
+    </select>
+  </div>
+    <ul class="layui-tree">
+      <li><h2>基础说明</h2></li>
+      <li class="site-tree-noicon ">
+        <a href="/doc/v10/">
+          <cite>开始使用</cite>
+          <em>Getting Started</em>
+        </a>
+      </li>
+      <li class="site-tree-noicon layui-this">
+        <a href="/doc/v10/faq.html">
+          <cite>常见问题</cite>
+          <em>FAQ</em>
+        </a>
+      </li>
+      <li class="site-tree-noicon ">
+        <a href="/doc/v10/label.html">
+          <cite>模板标签</cite>
+          <em>TempLate</em>
+        </a>
+      </li>
+
+    </ul>
+</div>
+
+  <div class="site-content">
+    <h1 class="site-h1">常见问题</h1>
+    
+    <blockquote class="layui-elem-quote">
+      本篇将主要讲解使用过程中普遍遇到的“问题”，这些问题并非是BUG，通常是需要我们自己去注意的一些点。（会结合用户反馈持续补充）
+    </blockquote>
+
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="quickstart">快速安装</a></legend>
+    </fieldset>
+
+    <div class="layui-elem-quote">
+      <p>获得 苹果CMS 后，将其完整地部署到你的网站目录，然后访问网站，即可自动跳转到安装页面install.php。</p>
+      <p>输入事先准备好的mysql数据库账户密码，即可一键安装。</p>
+    </div>
+
+
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="use">常见疑问</a></legend>
+    </fieldset>
+    <div class="site-text">
+
+      <pre class="layui-code" >
+*,为什么无法在线播放?
+程序只提供数据管理功能，无法直接实现站内播放功能，如有需要请自行整合第三方提供的插件。
+-
+-
+1，上传失败常见问题？
+由于采用最新的TP框架，需要开启php的fileinfo支持库，php.ini里 extension=php_fileinfo.dll ；宝塔等面板里直接安装开启 。
+上传失败问题请检查php临时文件目录权限和cms系统文件存储目录权限。
+windows一般是：C:/windows/temp，linux一般是/var/tmp。 cms存储目录upload。
+如果开启第三方存储，请检查三方存储配置信息。
+也可能是php.ini配置文件里post和upload大小限制，修改的值大一些即可。
+upload_max_filesize = 8M
+post_max_size = 10M
+-
+-
+2，如果使用的是php5.6版本（php7版本不受影响），还需要设置php.ini开启always_populate_raw_post_data = -1 这个选项，也就是去掉这项配置前面的分号即可。
+-
+-
+3，运行安装页面出现空白页面，该情况一般为Runtime目录没有修改写入权限**
+-
+-
+4，SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column '' at row 1  或者 Warning: 1265 Data truncated for column 类似错误**
+RE:############################################
+该错误就插入字段长度超过设定的长度，一般程序会在数据库字段设置字符长度在插入之前程序很少会先判断数据长度和截取数据 这样会影响性能，所以你就需要修改你数据库的配置文件一般在MYSQL 安装目录中的my.ini中 搜索sql-mode
+sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+ 把其中的STRICT_TRANS_TABLES,去掉 建议使用该方法
+sql-mode="NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+或者把
+sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" 直接删除
+############################################
+-
+-
+5，数据库连接配置文件。
+RE:手动修改数据库连接信息，数据库密码等/application/database.php
+-
+-
+6，重新安装程序删除install.lock。
+RE:需要删除/application/data/install/install.lock
+-
+-
+7，采集联盟资源库或其他资源库为何播放不了？（资源类型是youku、tudou、iqiyi等等）第三方网址
+RE:方法1，整合资源站的播放器js文件。方案2，开启全局解析或独立解析和播放器解析状态。
+-
+-
+8，宝塔Nginx环境下，程序安装完毕后除非首页其他页面全部404的问题？
+RE:方法，进入宝塔软件设置，找到对应的php版本-设置，安装扩展，找到PATH_INFO这项，点击关闭，然后重新安装一下就ok了，这个可能是宝塔的bug。
+-
+-
+9，采集完数据后为何无法播放？？？
+RE:检查采集数据的播放地址，如果是完成的http地址，则需要开启播放器的解析状态用解析播放；如果采集的数据ID可会直接用本地播放器来播放。
+-
+-
+10，为何新增加了分类，前台页面进入提示没有权限？？？
+RE:因为新加的分类默认所有会员组都是没有权限的，需要进入会员组里配置每个组的分类权限，保存一下即可。
+-
+-
+11，路由规则改错了，页面权都打不开了，怎么恢复到默认的？？？
+RE:下载完整安装包，复制application/route.php 替换到网站里，就可以打开了，然后在后台重新修改下路由规则。
+-
+-
+12，nginx下除了首页其他都是404怎么办？修改一下伪静态规则，一般都可以解决了。 如果修改了后台文件入口admin.php，则改为对应的文件名。
+ if (!-e $request_filename) {
+        rewrite ^/index.php(.*)$ /index.php?s=$1 last;
+        rewrite ^/admin.php(.*)$ /admin.php?s=$1 last;
+        rewrite ^/api.php(.*)$ /api.php?s=$1 last;
+        rewrite ^(.*)$ /index.php?s=$1 last;
+        break;
+        }
+-
+-
+
+      </pre>
+    </div>
+
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="use">常用sql语句</a></legend>
+    </fieldset>
+    <div class="site-text">  
+
+      <pre class="layui-code" >
+1.查询数据
+SELECT * FROM {pre}vod   查询所有数据
+SELECT * FROM {pre}vod WHERE vod_id=1000   查询指定ID数据
+
+2.删除数据
+DELETE  FROM {pre}vod   删除所有数据
+DELETE  FROM {pre}vod WHERE vod_id=1000   删除指定的第几条数据
+DELETE  FROM {pre}vod WHERE vod_actor LIKE '%刘德华%'   删除vod_actor字段里有"刘德华"的数据
+DELETE  FROM {pre}vod WHERE vod_type=1   删除指定的分类ID的数据
+DELETE  FROM {pre}vod WHERE vod_area LIKE '%台湾%'   删除指定地区的数据
+DELETE  FROM {pre}vod WHERE vod_lang LIKE '%粤语%'  删除指定语言的数据
+
+3.修改数据
+UPDATE {pre}vod SET vod_hits=1   将所有vod_hits字段里的值修改成1
+UPDATE {pre}vod SET vod_hits=1 WHERE vod_id=1000  指定的第几条数据把vod_hits字段里的值修改成1
+
+4，把图片地址中的某个字符串替换为另外一个字符串
+UPDATE {pre}vod SET vod_pic=REPLACE(vod_pic, '原始字符串', '替换成其他字符串')
+
+5，删除数据库后自增ID重新从1开始
+PHP： truncate {pre}vod
+ASP： acc 用office打开数据库，删除数据后，压缩修复数据库即可。
+          或 ALTER TABLE {pre}vod ALTER COLUMN vod_id COUNTER (1, 1)
+          mssql用   TRUNCATE TABLE  {pre}vod
+
+6，删除数据库名称重复的数据
+DELETE FROM {pre}vod where vod_id not in ( SELECT vod_id FROM {pre}vod GROUP BY vod_name HAVING COUNT(*)>1)
+
+7，修复死锁的表
+REPAIR TABLE `{pre}art` ,`{pre}vod` ,`{pre}type` ,`{pre}comment` ,`{pre}gbook` ,`{pre}link` ,`{pre}admin` ,`{pre}topic` ,`{pre}user` ,`{pre}card` ,`{pre}group` ,`{pre}visit`
+
+      </pre>
+    </div>
+
+
+    <fieldset class="layui-elem-field layui-field-title site-title">
+      <legend><a name="use">页面提交数据后过段时间才生效？</a></legend>
+    </fieldset>
+    <div class="site-text">
+
+      <pre class="layui-code" >
+这个一般是web服务配置了缓存导致的~~
+访问phpinfo(),看看是不是你开启了ZendOpcache之类的opcode缓存.ZendOpcache里面有个过期时间配置,如opcache.revalidate_freq=60 ,表示60秒后脚本再次被访问时会检测PHP文件的时间戳,有改变则更新opcode缓存,你可以设为0,这样每次访问都会检测文件时间戳,你的修改就能生效了.
+
+在php.ini文件中找到
+opcache.enable=1
+或
+opcache.enable_cli=1
+改为0，重启php-fpm，done
+      </pre>
+    </div>
+
+
+      <fieldset class="layui-elem-field layui-field-title site-title">
+          <legend><a name="use">为什么播放器不能全屏？</a></legend>
+      </fieldset>
+      <div class="site-text">
+
+      <pre class="layui-code" >
+如果播放器被包含在 iframe 里，尝试在 iframe 上添加 allowfullscreen 属性。
+为了完善的浏览器兼容性，它应该是这样：
+<iframe src="example.com"
+        allowfullscreen="allowfullscreen"
+        mozallowfullscreen="mozallowfullscreen"
+        msallowfullscreen="msallowfullscreen"
+        oallowfullscreen="oallowfullscreen"
+        webkitallowfullscreen="webkitallowfullscreen"></iframe>
+      </pre>
+      </div>
+
+
+    
+    <div class="layui-elem-quote">
+      <p>苹果CMS - 用心与你沟通</p>
+    </div>
+    
+  </div>
+</div>
+
+<div class="layui-footer footer footer-doc">
+  <div class="layui-main">
+    <p>&copy; 2020 <a href="/">maccms.la</a> MIT license</p>
+    <p>
+      声明：请在遵守法律的前提下使用本站软件，对用户在使用过程中的信息内容本站不负任何责任！
+    </p>
+    <p class="site-union">
+      <a href="https://www.upyun.com?from=maccms" target="_blank" rel="nofollow" upyun><img src="/static/images/upyun.png" alt="upyun"></a>
+      <span>提供 CDN 赞助</span>
+    </p>
+  </div>
+</div>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script>
+layui.config({
+  base: '/static/js/'
+  ,version: '20180130'
+}).use('global');
+</script>
+<span style="display:none;">
+</span>
+</body>
+</html>
